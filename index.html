@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora bhaskara</title>
+    <script>
+
+        function click_calcular() {
+                const valorA = document.getElementById("txtValorA").value;
+                const valorB = document.getElementById("txtValorB").value;
+                const valorC = document.getElementById("txtValorC").value;
+                let delta = (Number(valorB) ** 2) - 4 * (Number(valorA)) * (Number(valorC));
+                
+                if(valorA == '' || valorB == '' || valorC == ''){
+                    alert(`Insira números!`);
+                }
+                else if(valorA === '0'){
+                    alert(`Insira um valor para A diferente de 0!`);
+                }
+                else if (delta < 0) {
+                    alert(`Delta menor que 0! Informe outros valores!`);
+                }
+                else {
+                    let contaX1 = (-(valorB) + Math.sqrt(delta)) / (2 * valorA);
+                    let contaX2 = (-(valorB) - Math.sqrt(delta)) / (2 * valorA);
+                    document.getElementById("x1").innerHTML = `<h1> X' = ${contaX1} </h1>`;
+                    document.getElementById("x2").innerHTML = `<h1> X" = ${contaX2} </h1>`;
+                }
+
+            }
+
+        function click_limpar() {
+                document.getElementById("txtValorA").value = "";
+                document.getElementById("txtValorB").value = "";
+                document.getElementById("txtValorC").value = "";
+                document.getElementById("x1").innerHTML = "";
+                document.getElementById("x2").innerHTML = "";
+            }
+        
+    </script>
+    <style>
+         * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        
+        body{
+            background-color: rgb(229, 212, 255);
+        }
+
+        section{
+            width: 800px;
+            margin: auto;
+            margin-top: 200px;
+        }
+        form{
+            background-color: rgb(253, 253, 248);
+            border: 1px solid;
+        }
+
+        form div{
+            margin: 10px;
+        }
+
+        h1{
+            font-size: 25px;
+        }
+
+        label{
+            font-size: 18px;
+        }
+
+        input{
+            border: none;
+            border-bottom: 1px solid;
+            font-size: 16px;
+            padding: 2px;
+        }
+
+        #botoes input{
+            font-size: 17px;
+            padding: 5px;
+            margin: 0 0 0 5px;
+            border-bottom: none;
+            cursor: pointer;
+        }
+
+    
+    </style>
+</head>
+<body>
+    <section>
+    <h1>CALCULADORA BHASKARA</h1>
+    <form>
+        <div>
+            <label for="txtValor1">Informe o valor A:</label>
+            <input type="number" name="txtValorA" id="txtValorA">
+        </div>
+        <div>
+            <label for="txtValor3">Informe o valor B:</label>
+            <input type="number" name="txtValorB" id="txtValorB">
+        </div>
+        <div>
+            <label for="txtValor3">Informe o valor C:</label>
+            <input type="number" name="txtValorC" id="txtValorC">
+        </div>
+        <div id="resultado">
+            <h1>Resultado:</h1>
+            <div id="x1"></div>
+            <div id="x2"></div>
+        </div>
+        <div id="botoes">
+            <input type="button" value="Calcular" onclick="click_calcular();">
+            <input type="button" value="Limpar" onclick="click_limpar();">
+        </div>
+    </form>
+    </section>
+</body>
+</html>
